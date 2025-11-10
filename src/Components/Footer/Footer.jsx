@@ -13,21 +13,12 @@ const Footer = () => {
             to="/"
             className="btn flex gap-0 justify-center items-center py-10 px-8 text-xl"
           >
-            <img
-              className="w-24 text-center block md:hidden"
-              src={Logo1}
-              alt="Logo1"
-            />
-            <img
-              className="w-28 pt-5 text-center hidden md:block"
-              src={Logo}
-              alt="Logo"
-            />
-            <div className="hidden md:block">
+            <img className="w-28 pt-5 text-center " src={Logo} alt="Logo" />
+            <div className="">
               <h4 className="text-[#A88647] text-balance">
                 Study<span className="text-[#4A7BA8]">Mate</span>
               </h4>
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-gray-500 hidden md:block">
                 Unlock Your Learning Potential
               </p>
             </div>

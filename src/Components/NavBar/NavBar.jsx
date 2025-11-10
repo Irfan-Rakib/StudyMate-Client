@@ -11,9 +11,6 @@ const NavBar = () => {
       <li>
         <NavLink to="/find-partners">Find Partners</NavLink>
       </li>
-      <li>
-        <NavLink to="/login">Login</NavLink>
-      </li>
     </>
   );
   return (
@@ -73,7 +70,7 @@ const NavBar = () => {
           <ul className="menu menu-horizontal px-1">{Links}</ul>
         </div>
         <div className="navbar-end">
-          <a className="btn">Button</a>
+          <a className="btn">Login</a>
         </div>
       </div>
     </div>
