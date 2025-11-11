@@ -94,7 +94,7 @@ const Register = () => {
         className="hero min-h-screen flex items-center justify-center md:justify-end px-5 md:pr-10 lg:pr-50"
         style={{
           backgroundImage:
-            "url(https://lagunabeachvet.com/wp-content/uploads/2023/11/lbvmc-keeping-your-furry-friend-warm.jpg)",
+            "url(https://cdn.pixabay.com/photo/2021/02/18/12/03/people-6027028_1280.jpg)",
         }}
       >
         <div className="card px-5 backdrop-blur-sm  w-full max-w-sm lg:max-w-lg shrink-0 shadow-2xl pb-8 rounded-2xl">
@@ -158,7 +158,7 @@ const Register = () => {
               >
                 {show ? <FaEye /> : <IoEyeOff />}
               </span>
-              <button className="btn bg-orange-200 font-bold mt-4">
+              <button className="btn bg-[#4A7BA8] text-white font-bold mt-4">
                 Register
               </button>{" "}
               <p className="mt-3">

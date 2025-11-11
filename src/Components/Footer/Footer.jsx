@@ -7,18 +7,15 @@ import { FaXTwitter } from "react-icons/fa6";
 const Footer = () => {
   return (
     <div className="bg-gray-700">
-      <footer className="footer sm:footer-horizontal container mx-auto text-neutral-content p-10">
+      <footer className="footer sm:footer-horizontal container mx-auto text-neutral-content  p-10">
         <aside>
-          <Link
-            to="/"
-            className="btn flex gap-0 justify-center items-center py-10 px-8 text-xl"
-          >
-            <img className="w-28 pt-5 text-center " src={Logo} alt="Logo" />
-            <div className="">
-              <h4 className="text-[#A88647] text-balance">
+          <Link to="/" className="flex gap-2  rounded- items-center">
+            <img className="  w-10 md:w-14" src={Logo} alt="Logo" />
+            <div className=" leading-tight">
+              <h4 className="text-[#A88647] font-semibold text-lg">
                 Study<span className="text-[#4A7BA8]">Mate</span>
               </h4>
-              <p className="text-sm text-gray-500 hidden md:block">
+              <p className="text-xs text-gray-300">
                 Unlock Your Learning Potential
               </p>
             </div>
@@ -80,11 +77,12 @@ const Footer = () => {
           </div>
         </nav>
       </footer>
-      <footer className="footer sm:footer-horizontal footer-center bg-base-300 text-base-content p-4">
+      <footer className="footer sm:footer-horizontal footer-center bg-gray-200 text-base-content p-4">
         <aside>
           <p>
-            Copyright © {new Date().getFullYear()} - All right reserved by
-            StudyMate.
+            © {new Date().getFullYear()} — All rights reserved by{" "}
+            <span className="text-[#A88647] font-semibold">Study</span>
+            <span className="text-[#4A7BA8] font-semibold">Mate</span>
           </p>
         </aside>
       </footer>

@@ -1,6 +1,6 @@
 import React, { useContext, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
-import logo from "../assets/logo.png";
+// import Logo from "../assets/logo.png";
 
 import { FaEye } from "react-icons/fa";
 import { IoEyeOff } from "react-icons/io5";
@@ -116,12 +116,12 @@ const Login = () => {
         className="hero min-h-screen flex items-center justify-center md:justify-end  px-5 md:pr-10 lg:pr-50"
         style={{
           backgroundImage:
-            "url(https://lagunabeachvet.com/wp-content/uploads/2023/11/lbvmc-keeping-your-furry-friend-warm.jpg)",
+            "url(https://cdn.pixabay.com/photo/2021/02/18/12/03/people-6027028_1280.jpg)",
         }}
       >
         <div className="card px-5 backdrop-blur-sm w-full max-w-sm lg:max-w-lg shrink-0 shadow-2xl pb-8 rounded-2xl">
-          <div className=" flex flex-col items-center justify-center pt-0 relative">
-            {/* <img className="w-80 h- absolute -top-7" src={logo} alt="" /> */}
+          <div className=" flex flex-col items-center justify-center pt-0 ">
+            {/* <img className="w-80 h- absolute -top-7" src={Logo} alt="" /> */}
             <h1 className="font-bold text-2xl pt-18 pb-0">
               Please Login Your Account
             </h1>
@@ -147,7 +147,7 @@ const Login = () => {
               />
               <span
                 onClick={() => setShow(!show)}
-                className="absolute cursor-pointer top-59  right-15 text-lg"
+                className="absolute cursor-pointer top-67 md:top-59 right-15 text-lg"
               >
                 {show ? <FaEye /> : <IoEyeOff />}
               </span>
@@ -160,7 +160,7 @@ const Login = () => {
                   Forgot password?
                 </a>
               </div>
-              <button className="btn  mt-4 bg-orange-200 font-bold">
+              <button className="btn  mt-4  bg-[#A88647]  text-white font-bold">
                 Login
               </button>
               <br />

@@ -5,7 +5,6 @@ import { toast } from "react-toastify";
 import { HashLoader } from "react-spinners";
 import { FaUserCircle } from "react-icons/fa";
 import Logo from "../../assets/Logo.png";
-import Logo1 from "../../assets/Logo1.png";
 
 const NavBar = () => {
   const { user, setUser, signOutFunc, loading } = useContext(AuthContext);
@@ -112,8 +111,7 @@ const NavBar = () => {
 
           {/* Logo */}
           <Link to="/" className="flex gap-2 items-center">
-            <img className="w-10 md:hidden" src={Logo1} alt="Logo" />
-            <img className="hidden md:block w-20" src={Logo} alt="Logo" />
+            <img className=" md:block w-10 md:w-14" src={Logo} alt="Logo" />
             <div className="hidden md:block leading-tight">
               <h4 className="text-[#A88647] font-semibold text-lg">
                 Study<span className="text-[#4A7BA8]">Mate</span>
@@ -176,13 +174,13 @@ const NavBar = () => {
             <div className="flex gap-3">
               <Link
                 to="/login"
-                className="btn bg-orange-400 text-blue-950 font-bold"
+                className="btn  bg-[#A88647]  text-white font-bold"
               >
                 Login
               </Link>
               <Link
                 to="/register"
-                className="btn bg-amber-500 text-white font-bold"
+                className="btn bg-[#4A7BA8] text-white font-bold"
               >
                 Register
               </Link>
