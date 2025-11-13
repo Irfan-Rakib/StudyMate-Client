@@ -8,6 +8,8 @@ import Error404 from "../Pages/Error404";
 import Profile from "../Pages/Profile";
 import CreatePartnerProfile from "../Pages/CreatePartnerProfile";
 import MyConnections from "../Pages/MyConnections";
+import PartnerDetails from "../Components/PartnerDetails";
+import PrivateRoutes from "./PrivateRoutes";
 
 export const router = createBrowserRouter([
   {
@@ -23,6 +25,14 @@ export const router = createBrowserRouter([
       { path: "/profile", Component: Profile },
       { path: "/create-partner-profile", Component: CreatePartnerProfile },
       { path: "/my-connections", Component: MyConnections },
+      {
+        path: "/partner/:id",
+        element: (
+          <PrivateRoutes>
+            <PartnerDetails />
+          </PrivateRoutes>
+        ),
+      },
     ],
   },
 ]);

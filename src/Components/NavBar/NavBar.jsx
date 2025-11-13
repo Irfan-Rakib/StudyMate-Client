@@ -68,7 +68,7 @@ const NavBar = () => {
       </li>
     </>
   );
-
+  console.log(user);
   return (
     <div className="bg-base-100 shadow-sm sticky top-0 z-50">
       <div className="navbar container mx-auto">
