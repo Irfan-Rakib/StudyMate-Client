@@ -1,45 +1,59 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useContext } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { AuthContext } from "../context/AuthContext";
+import { toast } from "react-toastify";
 import "animate.css";
 
 const FindPartners = () => {
+  const { user } = useContext(AuthContext);
   const [partners, setPartners] = useState([]);
   const [filtered, setFiltered] = useState([]);
   const [search, setSearch] = useState("");
   const [sortOrder, setSortOrder] = useState("asc");
+  const [loading, setLoading] = useState(true);
   const cardRefs = useRef([]);
 
+  // Fetch partners from backend
+  const fetchPartners = async (query = "") => {
+    try {
+      setLoading(true);
+      const res = await axios.get(
+        `http://localhost:3000/models${query ? `?search=${query}` : ""}`
+      );
+      setPartners(res.data);
+      setFiltered(res.data);
+    } catch (err) {
+      console.error(err);
+      toast.error("Failed to fetch partners");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
-    axios
-      .get("http://localhost:3000/models")
-      .then((res) => {
-        setPartners(res.data);
-        setFiltered(res.data);
-      })
-      .catch((err) => console.error(err));
+    fetchPartners();
   }, []);
 
-  // 🔍 Search
+  // Search handler
   const handleSearch = (e) => {
     const value = e.target.value.toLowerCase();
     setSearch(value);
-    const result = partners.filter((p) => p.name.toLowerCase().includes(value));
-    setFiltered(result);
+    fetchPartners(value);
   };
 
-  // 🔃 Sort
+  // Sort handler
   const handleSort = () => {
-    const sorted = [...filtered].sort((a, b) => {
-      return sortOrder === "asc"
+    const sorted = [...filtered].sort((a, b) =>
+      sortOrder === "asc"
         ? a.name.localeCompare(b.name)
-        : b.name.localeCompare(a.name);
-    });
+        : b.name.localeCompare(a.name)
+    );
     setFiltered(sorted);
     setSortOrder(sortOrder === "asc" ? "desc" : "asc");
   };
 
-  // Animate cards when in viewport
+  // Animate cards on scroll
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -55,16 +69,25 @@ const FindPartners = () => {
       },
       { threshold: 0.2 }
     );
-
-    cardRefs.current.forEach((card) => {
-      if (card) observer.observe(card);
-    });
-
+    cardRefs.current.forEach((card) => card && observer.observe(card));
     return () => observer.disconnect();
   }, [filtered]);
 
+  if (loading) {
+    return (
+      <div className="min-h-screen flex justify-center items-center bg-gray-50">
+        <div className="w-12 h-12 border-4 border-blue-500 border-dashed rounded-full animate-spin"></div>
+      </div>
+    );
+  }
+
   return (
-    <div className="container mx-auto px-4 mt-20">
+    <div className="container mx-auto px-4 mt-20 min-h-screen">
+      <h1 className="text-3xl font-bold text-center text-[#4A7BA8] mb-8 animate__animated animate__fadeInDown">
+        Find Your Partners
+      </h1>
+
+      {/* Search & Sort */}
       <div className="flex flex-col sm:flex-row justify-between items-center mb-6 gap-4">
         <button
           onClick={handleSort}
@@ -72,7 +95,6 @@ const FindPartners = () => {
         >
           Sort ({sortOrder === "asc" ? "A-Z" : "Z-A"})
         </button>
-
         <input
           type="text"
           placeholder="Search by name..."
@@ -82,13 +104,13 @@ const FindPartners = () => {
         />
       </div>
 
+      {/* Partner Cards */}
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {filtered.map((partner, index) => (
           <div
             key={partner._id}
             ref={(el) => (cardRefs.current[index] = el)}
-            className="bg-white shadow-lg rounded-xl overflow-hidden transform transition hover:-translate-y-1"
-            style={{ opacity: 0 }} // Start hidden, fade in on scroll
+            className="bg-white shadow-lg rounded-xl overflow-hidden transform transition hover:-translate-y-1 opacity-0"
           >
             <div className="relative w-full h-64">
               <img
@@ -100,7 +122,6 @@ const FindPartners = () => {
                 {partner.studyMode}
               </div>
             </div>
-
             <div className="p-5">
               <h3 className="text-xl font-bold text-[#4A7BA8] mb-2">
                 {partner.name}
@@ -115,11 +136,12 @@ const FindPartners = () => {
                 <strong>Rating:</strong> {"⭐".repeat(partner.rating)}
               </p>
 
+              {/* Only View Profile button */}
               <Link
                 to={`/partner/${partner._id}`}
-                className="inline-block mt-2 px-6 py-2 w-full text-center rounded-lg text-white font-semibold bg-[#4A7BA8] hover:bg-[#3a6680] transition"
+                className="block mt-2 w-auto px-6 py-2 rounded-lg text-white font-semibold bg-[#4A7BA8] hover:bg-[#3a6680] transition"
               >
-                View Profile
+                View Full Profile
               </Link>
             </div>
           </div>

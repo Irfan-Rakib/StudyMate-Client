@@ -30,7 +30,7 @@ const TopPartners = () => {
     <section className="py-16 bg-gray-100">
       <div className="max-w-6xl mx-auto px-4">
         <h2
-          className="text-3xl md:text-4xl font-bold text-center mb-10 text-[#4A7BA8]"
+          className="text-3xl  font-bold text-center mb-10 text-[#4A7BA8]"
           data-aos="fade-down"
         >
           Top Study Partners

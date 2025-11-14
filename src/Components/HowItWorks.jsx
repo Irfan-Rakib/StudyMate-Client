@@ -17,19 +17,19 @@ const HowItWorks = () => {
   ];
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 ">
       <div className="max-w-5xl mx-auto px-4 text-center">
         <h2
-          className="text-3xl md:text-4xl font-bold text-[#4A7BA8] mb-10"
+          className="text-3xl  font-bold text-[#4A7BA8] mb-10"
           data-aos="fade-down"
         >
           How It Works
         </h2>
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid  md:grid-cols-3 gap-8">
           {steps.map((step, i) => (
             <div
               key={i}
-              className="p-6 border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition"
+              className="p-6 border bg-white border-gray-200 rounded-xl shadow-sm hover:shadow-md transition"
               data-aos="zoom-in"
               data-aos-delay={i * 200}
             >

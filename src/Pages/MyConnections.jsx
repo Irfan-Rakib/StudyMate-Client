@@ -108,7 +108,7 @@ const MyConnections = () => {
   return (
     <div className="min-h-screen p-4 bg-gray-50">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl font-bold mb-6 text-center text-[#4A7BA8] animate__animated animate__fadeIn">
+        <h2 className="text-3xl font-bold  text-center text-[#4A7BA8]  animate__animated animate__fadeInDown my-15">
           My Connections
         </h2>
 
@@ -171,8 +171,8 @@ const MyConnections = () => {
 
         {/* Update Form */}
         {editProfile && (
-          <div className="fixed inset-0 flex justify-center items-center z-50 p-4 pointer-events-none">
-            <div className="bg-white p-6 rounded-lg w-full max-w-xl shadow-lg animate__animated animate__fadeInUp pointer-events-auto overflow-auto max-h-[90vh]">
+          <div className="fixed inset-0  flex justify-center items-center z-50 p-4 pointer-events-none">
+            <div className="bg-gray-50 p-6 rounded-lg w-full max-w-xl shadow-lg animate__animated animate__fadeInUp pointer-events-auto overflow-auto max-h-[90vh]">
               <h3 className="text-xl font-bold mb-4 text-center animate__animated animate__fadeIn">
                 Update Profile
               </h3>
