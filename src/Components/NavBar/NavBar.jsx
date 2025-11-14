@@ -3,7 +3,19 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { toast } from "react-toastify";
 import { HashLoader } from "react-spinners";
-import { FaUserCircle } from "react-icons/fa";
+
+import {
+  FaUserCircle,
+  FaHome,
+  FaSearch,
+  FaPlusCircle,
+  FaUsers,
+  FaSignInAlt,
+  FaUserPlus,
+  FaSignOutAlt,
+  FaUser,
+} from "react-icons/fa";
+
 import Logo from "../../assets/Logo.png";
 
 const NavBar = () => {
@@ -12,7 +24,6 @@ const NavBar = () => {
   const dropdownRef = useRef(null);
   const navigate = useNavigate();
 
-  // Logout
   const handleLogout = () => {
     signOutFunc()
       .then(() => {
@@ -23,13 +34,11 @@ const NavBar = () => {
       .catch((error) => toast.error(error.message));
   };
 
-  // Profile navigation
   const handleProfile = () => {
     navigate("/profile");
     setOpen(false);
   };
 
-  // Close dropdown on outside click
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
@@ -40,14 +49,18 @@ const NavBar = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // Navigation links
   const guestLinks = (
     <>
       <li>
-        <NavLink to="/">Home</NavLink>
+        <NavLink to="/" className="flex items-center gap-2">
+          <FaHome /> Home
+        </NavLink>
       </li>
+
       <li>
-        <NavLink to="/find-partners">Find Partners</NavLink>
+        <NavLink to="/find-partners" className="flex items-center gap-2">
+          <FaSearch /> Find Partners
+        </NavLink>
       </li>
     </>
   );
@@ -55,25 +68,40 @@ const NavBar = () => {
   const userLinks = (
     <>
       <li>
-        <NavLink to="/">Home</NavLink>
+        <NavLink to="/" className="flex items-center gap-2">
+          <FaHome /> Home
+        </NavLink>
       </li>
+
       <li>
-        <NavLink to="/find-partners">Find Partners</NavLink>
+        <NavLink to="/find-partners" className="flex items-center gap-2">
+          <FaSearch /> Find Partners
+        </NavLink>
       </li>
+
       <li>
-        <NavLink to="/create-partner-profile">Create Partner Profile</NavLink>
+        <NavLink
+          to="/create-partner-profile"
+          className="flex items-center gap-2"
+        >
+          <FaPlusCircle /> Create Partner Profile
+        </NavLink>
       </li>
+
       <li>
-        <NavLink to="/my-connections">My Connections</NavLink>
+        <NavLink to="/my-connections" className="flex items-center gap-2">
+          <FaUsers /> My Connections
+        </NavLink>
       </li>
     </>
   );
-  console.log(user);
+
   return (
     <div className="bg-base-100 shadow-sm sticky top-0 z-50">
       <div className="navbar container mx-auto">
         {/* Navbar Start */}
         <div className="navbar-start">
+          {/* Mobile Dropdown */}
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
               <svg
@@ -91,18 +119,24 @@ const NavBar = () => {
                 />
               </svg>
             </label>
+
             <ul
               tabIndex={0}
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-56 p-2 shadow"
             >
               {user ? userLinks : guestLinks}
+
               {!user && (
                 <>
                   <li>
-                    <NavLink to="/login">Login</NavLink>
+                    <NavLink to="/login" className="flex items-center gap-2">
+                      <FaSignInAlt /> Login
+                    </NavLink>
                   </li>
                   <li>
-                    <NavLink to="/register">Register</NavLink>
+                    <NavLink to="/register" className="flex items-center gap-2">
+                      <FaUserPlus /> Register
+                    </NavLink>
                   </li>
                 </>
               )}
@@ -111,7 +145,7 @@ const NavBar = () => {
 
           {/* Logo */}
           <Link to="/" className="flex gap-2 items-center">
-            <img className=" md:block w-10 md:w-14" src={Logo} alt="Logo" />
+            <img className="md:block w-10 md:w-14" src={Logo} alt="Logo" />
             <div className="hidden md:block leading-tight">
               <h4 className="text-[#A88647] font-semibold text-lg">
                 Study<span className="text-[#4A7BA8]">Mate</span>
@@ -136,7 +170,7 @@ const NavBar = () => {
             <HashLoader size={30} color="#F59E0B" />
           ) : user ? (
             <div className="relative">
-              {/* Profile photo */}
+              {/* Avatar */}
               <div
                 onClick={() => setOpen(!open)}
                 className="cursor-pointer w-10 h-10 rounded-full overflow-hidden border-2 border-amber-400"
@@ -154,18 +188,19 @@ const NavBar = () => {
 
               {/* Dropdown */}
               {open && (
-                <div className="absolute right-0 mt-3 w-40 bg-white border rounded-lg shadow-lg animate-fade-in">
+                <div className="absolute right-0 mt-3 w-44 bg-white border rounded-lg shadow-lg animate-fade-in">
                   <button
                     onClick={handleProfile}
-                    className="block w-full text-left px-4 py-2 hover:bg-gray-100"
+                    className="flex items-center gap-2 w-full px-4 py-2 hover:bg-gray-100"
                   >
-                    Profile
+                    <FaUser /> Profile
                   </button>
+
                   <button
                     onClick={handleLogout}
-                    className="block w-full text-left px-4 py-2 text-red-600 hover:bg-gray-100"
+                    className="flex items-center gap-2 w-full px-4 py-2 text-red-600 hover:bg-gray-100"
                   >
-                    Logout
+                    <FaSignOutAlt /> Logout
                   </button>
                 </div>
               )}
@@ -174,15 +209,16 @@ const NavBar = () => {
             <div className="flex gap-3">
               <Link
                 to="/login"
-                className="btn  bg-[#A88647]  text-white font-bold"
+                className="btn bg-[#A88647] text-white font-bold flex items-center gap-2"
               >
-                Login
+                <FaSignInAlt /> Login
               </Link>
+
               <Link
                 to="/register"
-                className="btn bg-[#4A7BA8] text-white font-bold"
+                className="btn bg-[#4A7BA8] text-white font-bold flex items-center gap-2"
               >
-                Register
+                <FaUserPlus /> Register
               </Link>
             </div>
           )}

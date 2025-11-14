@@ -4,6 +4,7 @@ import axios from "axios";
 import { AuthContext } from "../context/AuthContext";
 import { toast } from "react-toastify";
 import "animate.css";
+import NotFound from "../Components/NotFound";
 
 const MyConnections = () => {
   const { user, loading: authLoading } = useContext(AuthContext);
@@ -117,9 +118,9 @@ const MyConnections = () => {
             <div className="w-12 h-12 border-4 border-blue-500 border-dashed rounded-full animate-spin"></div>
           </div>
         ) : connections.length === 0 ? (
-          <p className="text-center text-gray-500 animate__animated animate__fadeIn">
-            No connections found.
-          </p>
+          <div className="flex justify-center items-center h-[60vh] text-gray-500 text-lg font-medium">
+            <NotFound />
+          </div>
         ) : (
           <div className="overflow-x-auto animate__animated animate__fadeIn">
             <table className="w-full min-w-[700px] border-collapse border border-gray-300">

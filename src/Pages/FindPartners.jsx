@@ -35,11 +35,19 @@ const FindPartners = () => {
     fetchPartners();
   }, []);
 
-  // Search handler
+  // Search handler (Frontend filtering)
   const handleSearch = (e) => {
     const value = e.target.value.toLowerCase();
     setSearch(value);
-    fetchPartners(value);
+
+    if (value.trim() === "") {
+      setFiltered(partners);
+    } else {
+      const matched = partners.filter((p) =>
+        p.name.toLowerCase().includes(value)
+      );
+      setFiltered(matched);
+    }
   };
 
   // Sort handler

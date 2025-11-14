@@ -9,10 +9,7 @@ const Error404 = () => {
         <p className="font-semibold">
           The page you are looking for is not available.
         </p>
-        <a
-          className="btn  bg-gradient-to-r from-[#632EE3] to-[#9F62F2] text-white p-5"
-          href="/"
-        >
+        <a className="btn   bg-[#A88647] text-white p-5" href="/">
           Goo Back
         </a>
       </div>
