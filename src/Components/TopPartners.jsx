@@ -40,14 +40,14 @@ const TopPartners = () => {
           {partners.map((partner, index) => (
             <div
               key={partner._id}
-              className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition"
+              className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition"
               data-aos="fade-up"
               data-aos-delay={index * 200}
             >
               <img
                 src={partner.profileimage}
                 alt={partner.name}
-                className="w-full h-56 object-cover"
+                className="w-full h-80 object-cover rounded-2xl"
               />
               <div className="p-5">
                 <h3 className="text-xl font-semibold text-[#4A7BA8] mb-2">

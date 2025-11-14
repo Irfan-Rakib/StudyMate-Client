@@ -82,7 +82,7 @@ const FindPartners = () => {
   }
 
   return (
-    <div className="container mx-auto px-4 mt-20 min-h-screen">
+    <div className="container max-w-6xl mx-auto px-4 my-20 min-h-screen">
       <h1 className="text-3xl font-bold text-center text-[#4A7BA8] mb-8 animate__animated animate__fadeInDown">
         Find Your Partners
       </h1>
@@ -105,41 +105,44 @@ const FindPartners = () => {
       </div>
 
       {/* Partner Cards */}
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 object-cover">
         {filtered.map((partner, index) => (
           <div
             key={partner._id}
             ref={(el) => (cardRefs.current[index] = el)}
-            className="bg-white shadow-lg rounded-xl overflow-hidden transform transition hover:-translate-y-1 opacity-0"
+            className="bg-white p-6 shadow-lg rounded-2xl overflow-hidden transform transition hover:-translate-y-1 opacity-0 w-full max-w-sm mx-auto"
           >
-            <div className="relative w-full h-64">
+            <div className="relative w-full h-fit">
               <img
                 src={partner.profileimage}
                 alt={partner.name}
-                className="w-full h-full object-cover"
+                className="w-full h-80 object-cover rounded-xl shadow-md"
               />
               <div className="absolute top-3 left-3 bg-[#4A7BA8] text-white text-xs px-2 py-1 rounded-md shadow">
                 {partner.studyMode}
               </div>
             </div>
-            <div className="p-5">
-              <h3 className="text-xl font-bold text-[#4A7BA8] mb-2">
+
+            <div className="p-4">
+              <h3 className="text-lg font-bold text-[#4A7BA8] mb-2">
                 {partner.name}
               </h3>
-              <p className="text-gray-600 mb-1">
+
+              <p className="text-sm text-gray-600 mb-1">
                 <strong>Subject:</strong> {partner.subject}
               </p>
-              <p className="text-gray-600 mb-1">
+
+              <p className="text-sm text-gray-600 mb-1">
                 <strong>Experience:</strong> {partner.experienceLevel}
               </p>
-              <p className="text-gray-600 mb-3">
+
+              <p className="text-sm text-gray-600 mb-3">
                 <strong>Rating:</strong> {"⭐".repeat(partner.rating)}
               </p>
 
-              {/* Only View Profile button */}
               <Link
                 to={`/partner/${partner._id}`}
-                className="block mt-2 w-auto px-6 py-2 rounded-lg text-white font-semibold bg-[#4A7BA8] hover:bg-[#3a6680] transition"
+                className="block mt-2 px-6 py-2 rounded-lg text-white font-semibold bg-[#4A7BA8] hover:bg-[#3a6680] transition w-auto mx-auto text-center"
               >
                 View Full Profile
               </Link>

@@ -7,20 +7,23 @@ const Testimonials = () => {
       name: "Aisha Rahman",
       review:
         "StudyMate helped me connect with amazing peers and stay motivated during exam prep!",
-      image: "https://i.ibb.co/7V0k1qz/profile1.jpg",
+      image:
+        "https://plus.unsplash.com/premium_photo-1661766386981-1140b7b37193?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
     {
       id: 2,
       name: "Rafiul Islam",
       review:
         "I’ve improved my grades by working with study partners I found here!",
-      image: "https://i.ibb.co/0nFz9Ff/profile2.jpg",
+      image:
+        "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg",
     },
     {
       id: 3,
       name: "Mehjabin Khan",
       review: "Great community and platform for focused learners!",
-      image: "https://i.ibb.co/5TjZfB2/profile3.jpg",
+      image:
+        "https://cdn.pixabay.com/photo/2024/01/30/02/58/ai-generated-8541133_640.png",
     },
   ];
 

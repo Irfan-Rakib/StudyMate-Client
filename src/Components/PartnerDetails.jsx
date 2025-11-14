@@ -37,8 +37,6 @@ const PartnerDetails = () => {
         message,
       });
 
-      await axios.patch(`http://localhost:3000/models/${id}/increment`);
-
       const res = await axios.get(`http://localhost:3000/models/${id}`);
       setPartner(res.data);
 
