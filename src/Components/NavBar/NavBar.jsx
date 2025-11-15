@@ -215,6 +215,7 @@ const NavBar = () => {
               >
                 {user?.photoURL ? (
                   <img
+                    referrerPolicy="no-referrer"
                     src={user.photoURL}
                     alt="User"
                     className="object-cover w-full h-full"

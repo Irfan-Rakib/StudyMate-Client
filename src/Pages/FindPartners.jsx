@@ -138,6 +138,11 @@ const FindPartners = () => {
           className="border border-gray-300 px-4 py-2 rounded-lg w-full sm:w-64 focus:outline-none focus:ring-2 focus:ring-[#4A7BA8]"
         />
       </div>
+      {/* Total partners found */}
+      <p className="text-gray-700 font-medium mb-4">
+        Total Found:{" "}
+        <span className="font-bold text-[#4A7BA8]">{filtered.length}</span>
+      </p>
 
       {/* Partner Cards */}
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 object-cover">
