@@ -1,6 +1,6 @@
 # 📚 StudyMate — Find Your Perfect Study Partner
 
-Live Link Placeholder: [**Click Here to Visit StudyMate!**](https://studymate-a10.netlify.app/)
+Live Link Placeholder: [Click Here to Visit StudyMate!](https://studymate-a10.netlify.app/){:target="\_blank"}
 
 ## ✨ Project Overview
 
