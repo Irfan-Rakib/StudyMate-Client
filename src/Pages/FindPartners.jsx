@@ -22,7 +22,9 @@ const FindPartners = () => {
   const fetchPartners = async () => {
     try {
       setLoading(true);
-      const res = await axios.get("http://localhost:3000/models");
+      const res = await axios.get(
+        "https://studymate-server-theta.vercel.app/models"
+      );
       setPartners(res.data);
       setFiltered(res.data);
     } catch (err) {
@@ -139,7 +141,7 @@ const FindPartners = () => {
         />
       </div>
       {/* Total partners found */}
-      <p className="text-gray-700 font-medium mb-4">
+      <p className="text-gray-700 dark:text-white font-medium mb-4">
         Total Found:{" "}
         <span className="font-bold text-[#4A7BA8]">{filtered.length}</span>
       </p>
@@ -150,7 +152,7 @@ const FindPartners = () => {
           <div
             key={partner._id}
             ref={(el) => (cardRefs.current[index] = el)}
-            className="bg-white p-6 shadow-lg rounded-2xl overflow-hidden transform transition hover:-translate-y-1 opacity-0 w-full max-w-sm mx-auto"
+            className="border  border-gray-200 p-6 shadow-lg rounded-2xl overflow-hidden transform transition hover:-translate-y-1 opacity-0 w-full max-w-sm mx-auto"
           >
             <div className="relative w-full h-fit">
               <img
@@ -182,7 +184,7 @@ const FindPartners = () => {
 
               <Link
                 to={`/partner/${partner._id}`}
-                className="block mt-2 px-6 py-2 rounded-lg text-white font-semibold bg-[#4A7BA8] hover:bg-[#3a6680] transition w-auto mx-auto text-center"
+                className="block mt-2 px-6 py-2 rounded-lg text-white font-semibold bg-[#4A7BA8] hover:bg-[#A88647] transition w-auto mx-auto text-center"
               >
                 View Full Profile
               </Link>

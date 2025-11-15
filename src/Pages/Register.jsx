@@ -158,7 +158,7 @@ const Register = () => {
               >
                 {show ? <FaEye /> : <IoEyeOff />}
               </span>
-              <button className="btn bg-[#4A7BA8] text-white font-bold mt-4">
+              <button className="btn bg-[#4A7BA8] hover:bg-[#A88647]  text-white font-bold mt-4 transition">
                 Register
               </button>{" "}
               <p className="mt-3">

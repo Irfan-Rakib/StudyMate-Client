@@ -6,7 +6,7 @@ import { FaXTwitter } from "react-icons/fa6";
 
 const Footer = () => {
   return (
-    <div className="bg-gray-700">
+    <div className="bg-gray-800">
       <footer className="footer sm:footer-horizontal container mx-auto text-neutral-content  p-10">
         <aside>
           <Link to="/" className="flex gap-2  rounded- items-center">
@@ -21,13 +21,27 @@ const Footer = () => {
             </div>
           </Link>
         </aside>
-        <p className="md:mx-8">
+
+        <p className="md:mx-5">
+          <h6 className="footer-title">About us</h6>
           StudyMate is a MERN Stack web platform designed to help students
           connect and collaborate for better learning outcomes.It enables users
           to find study partners based on subjects, learning preferences, or
           nearby locations, making education more interactive, engaging, and
           goal-oriented.
         </p>
+        <nav className="space-x-3">
+          <h6 className="footer-title">Legal</h6>
+          <a className="link link-hover">Terms of use</a>
+          <a className="link link-hover">Privacy policy</a>
+          <a className="link link-hover">Cookie policy</a>
+        </nav>
+        <nav className="space-x-3">
+          <h6 className="footer-title">Company</h6>
+          <a className="link link-hover">Contact</a>
+          <a className="link link-hover">Jobs</a>
+          <a className="link link-hover">Press kit</a>
+        </nav>
         <nav>
           <h6 className="footer-title">Social</h6>
           <div className="grid grid-flow-col gap-4">
@@ -77,7 +91,7 @@ const Footer = () => {
           </div>
         </nav>
       </footer>
-      <footer className="footer sm:footer-horizontal footer-center bg-gray-200 text-base-content p-4">
+      <footer className="footer sm:footer-horizontal footer-center bg-gray-200 dark:bg-gray-600 text-base-content p-4">
         <aside>
           <p>
             © {new Date().getFullYear()} — All rights reserved by{" "}

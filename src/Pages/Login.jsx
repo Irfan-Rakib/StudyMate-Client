@@ -160,7 +160,7 @@ const Login = () => {
                   Forgot password?
                 </a>
               </div>
-              <button className="btn  mt-4  bg-[#A88647]  text-white font-bold">
+              <button className="btn  mt-4   bg-[#A88647] hover:bg-[#4A7BA8] transition text-white font-bold">
                 Login
               </button>
               <br />

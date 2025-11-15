@@ -14,7 +14,9 @@ const PartnerDetails = () => {
   useEffect(() => {
     const fetchPartner = async () => {
       try {
-        const res = await axios.get(`http://localhost:3000/models/${id}`);
+        const res = await axios.get(
+          `https://studymate-server-theta.vercel.app/models/${id}`
+        );
         setPartner(res.data);
       } catch (err) {
         console.error(err);
@@ -31,13 +33,15 @@ const PartnerDetails = () => {
     if (!message.trim()) return toast.warning("Message cannot be empty!");
 
     try {
-      await axios.post("http://localhost:3000/requests", {
+      await axios.post("https://studymate-server-theta.vercel.app/requests", {
         senderEmail: user.email,
         partnerId: id,
         message,
       });
 
-      const res = await axios.get(`http://localhost:3000/models/${id}`);
+      const res = await axios.get(
+        `https://studymate-server-theta.vercel.app/models/${id}`
+      );
       setPartner(res.data);
 
       toast.success("Partner request sent successfully!");

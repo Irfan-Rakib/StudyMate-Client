@@ -34,7 +34,10 @@ const CreatePartnerProfile = () => {
     setLoading(true);
 
     try {
-      const res = await axios.post("http://localhost:3000/models", formData);
+      const res = await axios.post(
+        "https://studymate-server-theta.vercel.app/models",
+        formData
+      );
 
       toast.success("Profile created successfully!");
       setFormData({
@@ -46,7 +49,7 @@ const CreatePartnerProfile = () => {
         location: "",
         experienceLevel: "",
         rating: "",
-        patnerCount: 0,
+        partnerCount: 0,
         email: user?.email,
       });
     } catch (err) {
@@ -62,7 +65,7 @@ const CreatePartnerProfile = () => {
       <h2 className="text-3xl font-bold text-center text-[#4A7BA8] mb-6 animate__animated animate__fadeInDown mt-15">
         Create Your Study Partner Profile
       </h2>
-      <div className="rounded-xl shadow-lg animate__animated animate__fadeInUp bg-gray-50 max-w-3xl mx-auto my-20 p-8">
+      <div className="border  border-gray-200 rounded-xl shadow-lg animate__animated animate__fadeInUp  max-w-3xl mx-auto my-20 p-8">
         {/* Loading Spinner */}
         {loading && (
           <div className="flex justify-center my-6 animate__animated animate__fadeIn">
@@ -70,7 +73,7 @@ const CreatePartnerProfile = () => {
           </div>
         )}
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-4 px-4 py-7">
           <div>
             <label className="block font-semibold mb-1">Full Name</label>
             <input
@@ -119,11 +122,17 @@ const CreatePartnerProfile = () => {
               required
               value={formData.studyMode}
               onChange={handleChange}
-              className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-[#4A7BA8]"
+              className="w-full border  px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-[#4A7BA8]"
             >
-              <option value="">Select mode</option>
-              <option value="Online">Online</option>
-              <option value="Offline">Offline</option>
+              <option className="dark:bg-base-200" value="">
+                Select mode
+              </option>
+              <option className="dark:bg-base-200" value="Online">
+                Online
+              </option>
+              <option className="dark:bg-base-200" value="Offline">
+                Offline
+              </option>
             </select>
           </div>
 
@@ -164,10 +173,18 @@ const CreatePartnerProfile = () => {
               onChange={handleChange}
               className="w-full border px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-[#4A7BA8]"
             >
-              <option value="">Select level</option>
-              <option value="Beginner">Beginner</option>
-              <option value="Intermediate">Intermediate</option>
-              <option value="Expert">Expert</option>
+              <option className=" dark:bg-base-200" value="">
+                Select level
+              </option>
+              <option className=" dark:bg-base-200" value="Beginner">
+                Beginner
+              </option>
+              <option className=" dark:bg-base-200" value="Intermediate">
+                Intermediate
+              </option>
+              <option className=" dark:bg-base-200" value="Expert">
+                Expert
+              </option>
             </select>
           </div>
 
@@ -195,13 +212,13 @@ const CreatePartnerProfile = () => {
               name="email"
               readOnly
               value={formData.email}
-              className="w-full border px-4 py-2 rounded-md bg-gray-100"
+              className="w-full border px-4 py-2 rounded-md "
             />
           </div>
 
           <button
             type="submit"
-            className="w-full py-3 rounded-md font-semibold text-white bg-[#4A7BA8] hover:opacity-90 transition"
+            className="mt-4 w-full py-3 rounded-md font-semibold text-white bg-[#4A7BA8] hover:opacity-90 transition"
           >
             Create Profile
           </button>

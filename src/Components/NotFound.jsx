@@ -8,7 +8,10 @@ const NotFound = () => {
       <p className="font-semibold">
         Connections you are looking for is not available.
       </p>
-      <a className="btn   bg-[#A88647] text-white p-5" href="/">
+      <a
+        className="btn   bg-[#4A7BA8] hover:bg-[#A88647] text-white p-5"
+        href="/"
+      >
         Goo Back
       </a>
     </div>

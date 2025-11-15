@@ -34,7 +34,7 @@ const HeroCarousel = () => {
       title: "Track Your Progress",
       subtitle: "Stay organized, set goals, and achieve academic success.",
       image:
-        "https://cdn.pixabay.com/photo/2018/11/13/18/04/books-3813612_640.jpg",
+        "https://cdn.pixabay.com/photo/2015/07/31/11/45/library-869061_1280.jpg",
       ctaText: "View Connections",
       ctaLink: "/my-connections",
     },
@@ -54,7 +54,7 @@ const HeroCarousel = () => {
         {slides.map((slide) => (
           <SwiperSlide key={slide.id}>
             <div
-              className="relative w-full h-[60vh] md:h-[70vh] lg:h-[80vh] rounded-xl overflow-hidden flex items-end justify-start text-left"
+              className="border  border-gray-200 relative w-full h-[60vh] md:h-[70vh] lg:h-[80vh] rounded-xl overflow-hidden flex items-end justify-start text-left"
               style={{
                 backgroundImage: `url(${slide.image})`,
                 backgroundSize: "cover",
@@ -64,7 +64,7 @@ const HeroCarousel = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div>
 
               <div className="relative z-10 p-6 md:p-12 lg:p-16 max-w-xl">
-                <h2 className="text-2xl sm:text-3xl md:text-5xl font-extrabold mb-2 text-[#4A7BA8] drop-shadow-lg leading-tight">
+                <h2 className="text-2xl sm:text-2xl md:text-4xl font-bold mb-2 text-[#4A7BA8] drop-shadow-lg leading-tight">
                   {slide.title}
                 </h2>
                 <p className="text-sm sm:text-base md:text-xl mb-5 text-[#A88647] drop-shadow-md">
@@ -72,8 +72,7 @@ const HeroCarousel = () => {
                 </p>
                 <Link
                   to={slide.ctaLink}
-                  className="px-4 py-2 sm:px-6 sm:py-3 rounded-md text-white font-semibold hover:opacity-90 transition duration-300 shadow-lg"
-                  style={{ backgroundColor: "#4A7BA8" }}
+                  className="mt-4  bg-[#4A7BA8] hover:bg-[#A88647] text-white px-5 py-2 rounded-md  transition"
                 >
                   {slide.ctaText}
                 </Link>

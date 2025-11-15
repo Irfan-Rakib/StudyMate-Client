@@ -29,7 +29,7 @@ const HowItWorks = () => {
           {steps.map((step, i) => (
             <div
               key={i}
-              className="p-6 border bg-white border-gray-200 rounded-xl shadow-sm hover:shadow-md transition"
+              className="p-6 border  border-gray-200 rounded-xl shadow-sm hover:shadow-md transition"
               data-aos="zoom-in"
               data-aos-delay={i * 200}
             >

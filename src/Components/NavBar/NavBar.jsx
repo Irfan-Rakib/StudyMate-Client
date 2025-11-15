@@ -19,6 +19,14 @@ import {
 import Logo from "../../assets/Logo.png";
 
 const NavBar = () => {
+  const handleTheme = (checked) => {
+    const html = document.querySelector("html");
+    if (checked) {
+      html.setAttribute("data-theme", "dark");
+    } else {
+      html.setAttribute("data-theme", "light");
+    }
+  };
   const { user, setUser, signOutFunc, loading } = useContext(AuthContext);
 
   const [open, setOpen] = useState(false);
@@ -97,7 +105,7 @@ const NavBar = () => {
   );
 
   return (
-    <div className="bg-base-100 shadow-sm sticky top-0 z-50">
+    <div className="bg-base-100 dark:bg-gray-800  shadow-xl sticky top-0 z-50">
       <div className="navbar container mx-auto">
         {/* LEFT */}
         <div className="navbar-start">
@@ -166,7 +174,6 @@ const NavBar = () => {
 
         {/* RIGHT */}
         <div className="navbar-end flex items-center gap-3" ref={dropdownRef}>
-          {/* DaisyUI Theme Toggle */}
           <label className="flex cursor-pointer gap-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -184,9 +191,10 @@ const NavBar = () => {
             </svg>
 
             <input
+              onChange={(e) => handleTheme(e.target.checked)}
               type="checkbox"
               value="synthwave"
-              className="toggle theme-controller"
+              className="toggle "
             />
 
             <svg

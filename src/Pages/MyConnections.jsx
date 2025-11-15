@@ -16,7 +16,9 @@ const MyConnections = () => {
   const fetchConnections = async () => {
     try {
       setLoading(true);
-      const res = await axios.get("http://localhost:3000/models");
+      const res = await axios.get(
+        "https://studymate-server-theta.vercel.app/models"
+      );
       const userConnections = res.data.filter(
         (profile) => profile.email === user.email
       );
@@ -37,7 +39,7 @@ const MyConnections = () => {
   const handleDelete = (id) => {
     // Custom toast content
     const DeleteToast = ({ closeToast }) => (
-      <div className="flex flex-col gap-2 p-2">
+      <div className="flex  flex-col gap-2 p-2">
         <p className="font-semibold text-gray-700">
           Are you sure you want to delete this profile?
         </p>
@@ -45,7 +47,9 @@ const MyConnections = () => {
           <button
             onClick={async () => {
               try {
-                await axios.delete(`http://localhost:3000/models/${id}`);
+                await axios.delete(
+                  `https://studymate-server-theta.vercel.app/models/${id}`
+                );
                 toast.success("Profile deleted successfully!");
                 setConnections((prev) => prev.filter((c) => c._id !== id));
               } catch (err) {
@@ -86,7 +90,10 @@ const MyConnections = () => {
     e.preventDefault();
     try {
       const { _id, ...data } = editProfile;
-      await axios.put(`http://localhost:3000/models/${_id}`, data);
+      await axios.put(
+        `https://studymate-server-theta.vercel.app/models/${_id}`,
+        data
+      );
       toast.success("Profile updated successfully!");
       setConnections((prev) =>
         prev.map((c) => (c._id === _id ? editProfile : c))
@@ -107,7 +114,7 @@ const MyConnections = () => {
   }
 
   return (
-    <div className="min-h-screen p-4 bg-gray-50">
+    <div className="min-h-screen p-4 ">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-3xl font-bold  text-center text-[#4A7BA8]  animate__animated animate__fadeInDown my-15">
           My Connections
@@ -123,8 +130,14 @@ const MyConnections = () => {
           </div>
         ) : (
           <div className="overflow-x-auto animate__animated animate__fadeIn">
+            <p className="text-gray-700 dark:text-white font-medium mb-4">
+              Total Found:{" "}
+              <span className="font-bold text-[#4A7BA8]">
+                {connections.length}
+              </span>
+            </p>
             <table className="w-full min-w-[700px] border-collapse border border-gray-300">
-              <thead className="bg-gray-100">
+              <thead className="">
                 <tr>
                   <th className="border p-2">Profile</th>
                   <th className="border p-2">Subject</th>
@@ -136,7 +149,7 @@ const MyConnections = () => {
                 {connections.map((c, index) => (
                   <tr
                     key={c._id}
-                    className={`hover:bg-gray-100 animate__animated animate__fadeInUp`}
+                    className={` animate__animated animate__fadeInUp`}
                     style={{ animationDelay: `${index * 0.05}s` }}
                   >
                     <td className="border p-2 flex items-center gap-2">
@@ -151,7 +164,7 @@ const MyConnections = () => {
                     <td className="border p-2">{c.studyMode}</td>
                     <td className="border p-2 flex flex-wrap gap-2">
                       <button
-                        className="px-3 py-1 bg-yellow-500 text-white rounded hover:opacity-90"
+                        className="px-3 py-1 bg-[#A88647] text-white rounded hover:opacity-90"
                         onClick={() => handleEdit(c)}
                       >
                         Update

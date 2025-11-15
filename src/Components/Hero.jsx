@@ -6,7 +6,7 @@ const Hero = () => {
     <section className=" flex items-center mx-auto my-8">
       {/* Text Content */}
       <div className="flex-1 text-center ">
-        <h1 className="md:text-4xl text-3xl  font-bold text-[#4A7BA8] dark:text-[#00BFFF] mb-4">
+        <h1 className="md:text-4xl text-3xl  font-bold text-[#4A7BA8]  mb-4">
           Find Your Perfect{" "}
           <span className="text-[#A88647]">Study Partner</span>
         </h1>

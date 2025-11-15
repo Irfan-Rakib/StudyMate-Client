@@ -28,7 +28,7 @@ const Testimonials = () => {
   ];
 
   return (
-    <section className="py-20 bg-gray-100">
+    <section className="py-20 ">
       <div className="max-w-5xl mx-auto px-4 text-center">
         <h2
           className="text-3xl  font-bold text-[#4A7BA8] mb-10"
@@ -40,7 +40,7 @@ const Testimonials = () => {
           {reviews.map((review, i) => (
             <div
               key={review.id}
-              className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition"
+              className="border  border-gray-200  p-6 rounded-md shadow-xl hover:shadow-lg transition"
               data-aos="fade-up"
               data-aos-delay={i * 200}
             >

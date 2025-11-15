@@ -7,7 +7,7 @@ const HomeLayout = () => {
   return (
     <div>
       <NavBar></NavBar>
-      <div className="container mx-auto px-3 bg-gray-100 py-5">
+      <div className="container mx-auto px-3   dark:text-white py-5">
         <Outlet></Outlet>
       </div>
       <Footer></Footer>

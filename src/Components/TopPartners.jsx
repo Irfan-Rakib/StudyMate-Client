@@ -10,7 +10,7 @@ const TopPartners = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/models")
+      .get("https://studymate-server-theta.vercel.app/models")
       .then((res) => {
         const sorted = res.data.sort((a, b) => b.rating - a.rating);
         setPartners(sorted.slice(0, 3));
@@ -27,7 +27,7 @@ const TopPartners = () => {
   };
 
   return (
-    <section className="py-16 bg-gray-100">
+    <section className="py-16 ">
       <div className="max-w-6xl mx-auto px-4">
         <h2
           className="text-3xl  font-bold text-center mb-10 text-[#4A7BA8]"
@@ -40,7 +40,7 @@ const TopPartners = () => {
           {partners.map((partner, index) => (
             <div
               key={partner._id}
-              className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition"
+              className="border  border-gray-200 p-6 rounded-xl shadow-md hover:shadow-lg transition"
               data-aos="fade-up"
               data-aos-delay={index * 200}
             >
@@ -53,16 +53,20 @@ const TopPartners = () => {
                 <h3 className="text-xl font-semibold text-[#4A7BA8] mb-2">
                   {partner.name}
                 </h3>
-                <p className="text-gray-600 mb-2">
-                  <span className="font-medium">Subject:</span>{" "}
-                  {partner.subject}
+                <p className="text-sm text-gray-600 mb-1">
+                  <strong>Subject:</strong> {partner.subject}
                 </p>
-                <p className="text-yellow-500 font-semibold">
-                  ⭐ {partner.rating}/5
+
+                <p className="text-sm text-gray-600 mb-1">
+                  <strong>Experience:</strong> {partner.experienceLevel}
+                </p>
+
+                <p className="text-sm text-gray-600 mb-3">
+                  <strong>Rating:</strong> {"⭐".repeat(partner.rating)}
                 </p>
                 <button
                   onClick={() => handleViewProfile(partner._id)}
-                  className="mt-4 bg-[#A88647] text-white px-5 py-2 rounded-md hover:bg-[#4A7BA8] transition"
+                  className="block w-full mt-2 px-6 py-2 rounded-lg text-white font-semibold bg-[#4A7BA8] hover:bg-[#A88647] transition  mx-auto text-center"
                 >
                   View Profile
                 </button>
