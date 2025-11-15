@@ -68,7 +68,7 @@ const PartnerDetails = () => {
 
   return (
     <div className="min-h-screen flex justify-center items-start p-4  mt-14">
-      <div className="bg-white rounded-xl  shadow-lg w-full max-w-4xl px-5 py-12 flex flex-col gap-6 animate__animated animate__fadeInUp">
+      <div className="border border-gray-200 rounded-xl  shadow-lg w-full max-w-4xl px-5 py-12 flex flex-col gap-6 animate__animated animate__fadeInUp">
         {/* Partner Info */}
         <div className="flex flex-col md:flex-row gap-8 items-center mx-auto ">
           <img
@@ -111,7 +111,7 @@ const PartnerDetails = () => {
             onChange={(e) => setMessage(e.target.value)}
             placeholder="Write a short message..."
             rows={3}
-            className="w-full border border-gray-300 p-3 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-[#4A7BA8]"
+            className="w-full  border border-gray-200 p-3 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-[#4A7BA8]"
           />
           <button
             onClick={handleSendRequest}

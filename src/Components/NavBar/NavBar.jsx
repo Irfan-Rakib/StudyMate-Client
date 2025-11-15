@@ -251,19 +251,21 @@ const NavBar = () => {
               )}
             </div>
           ) : (
-            <div className="flex gap-3">
-              <Link
-                to="/login"
-                className="btn bg-[#A88647] text-white font-bold flex items-center gap-2"
-              >
-                <FaSignInAlt /> Login
-              </Link>
-              <Link
-                to="/register"
-                className="btn bg-[#4A7BA8] text-white font-bold flex items-center gap-2"
-              >
-                <FaUserPlus /> Register
-              </Link>
+            <div className="hidden md:block">
+              <div className="flex   gap-3">
+                <Link
+                  to="/login"
+                  className="btn bg-[#A88647] text-white font-bold flex items-center gap-2"
+                >
+                  <FaSignInAlt /> Login
+                </Link>
+                <Link
+                  to="/register"
+                  className="btn bg-[#4A7BA8] text-white font-bold flex items-center gap-2"
+                >
+                  <FaUserPlus /> Register
+                </Link>
+              </div>
             </div>
           )}
         </div>
