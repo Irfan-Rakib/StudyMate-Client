@@ -9,18 +9,20 @@ const FindPartners = () => {
   const { user } = useContext(AuthContext);
   const [partners, setPartners] = useState([]);
   const [filtered, setFiltered] = useState([]);
-  const [search, setSearch] = useState("");
-  const [sortOrder, setSortOrder] = useState("asc");
   const [loading, setLoading] = useState(true);
+
+  // Filters & search
+  const [search, setSearch] = useState("");
+  const [subjectFilter, setSubjectFilter] = useState("");
+  const [experienceFilter, setExperienceFilter] = useState("");
+
   const cardRefs = useRef([]);
 
-  // Fetch partners from backend
-  const fetchPartners = async (query = "") => {
+  // Fetch partners
+  const fetchPartners = async () => {
     try {
       setLoading(true);
-      const res = await axios.get(
-        `http://localhost:3000/models${query ? `?search=${query}` : ""}`
-      );
+      const res = await axios.get("http://localhost:3000/models");
       setPartners(res.data);
       setFiltered(res.data);
     } catch (err) {
@@ -35,33 +37,31 @@ const FindPartners = () => {
     fetchPartners();
   }, []);
 
-  // Search handler (Frontend filtering)
-  const handleSearch = (e) => {
-    const value = e.target.value.toLowerCase();
-    setSearch(value);
+  // Apply filters + search
+  useEffect(() => {
+    let temp = [...partners];
 
-    if (value.trim() === "") {
-      setFiltered(partners);
-    } else {
-      const matched = partners.filter((p) =>
-        p.name.toLowerCase().includes(value)
+    if (subjectFilter) {
+      temp = temp.filter(
+        (p) => p.subject.toLowerCase() === subjectFilter.toLowerCase()
       );
-      setFiltered(matched);
     }
-  };
+    if (experienceFilter) {
+      temp = temp.filter(
+        (p) =>
+          p.experienceLevel.toLowerCase() === experienceFilter.toLowerCase()
+      );
+    }
+    if (search) {
+      temp = temp.filter((p) =>
+        p.name.toLowerCase().includes(search.toLowerCase())
+      );
+    }
 
-  // Sort handler
-  const handleSort = () => {
-    const sorted = [...filtered].sort((a, b) =>
-      sortOrder === "asc"
-        ? a.name.localeCompare(b.name)
-        : b.name.localeCompare(a.name)
-    );
-    setFiltered(sorted);
-    setSortOrder(sortOrder === "asc" ? "desc" : "asc");
-  };
+    setFiltered(temp);
+  }, [partners, subjectFilter, experienceFilter, search]);
 
-  // Animate cards on scroll
+  // Animate cards
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -89,25 +89,52 @@ const FindPartners = () => {
     );
   }
 
+  const subjects = [...new Set(partners.map((p) => p.subject))];
+  const experiences = [...new Set(partners.map((p) => p.experienceLevel))];
+
   return (
     <div className="container max-w-6xl mx-auto px-4 my-20 min-h-screen">
       <h1 className="text-3xl font-bold text-center text-[#4A7BA8] mb-8 animate__animated animate__fadeInDown">
         Find Your Partners
       </h1>
 
-      {/* Search & Sort */}
+      {/* Filters + Search */}
       <div className="flex flex-col sm:flex-row justify-between items-center mb-6 gap-4">
-        <button
-          onClick={handleSort}
-          className="px-5 py-2 rounded-lg text-white font-semibold bg-[#A88647] hover:bg-[#a3743d] transition"
-        >
-          Sort ({sortOrder === "asc" ? "A-Z" : "Z-A"})
-        </button>
+        {/* Left side: Filters */}
+        <div className="flex gap-3 flex-wrap">
+          <select
+            value={subjectFilter}
+            onChange={(e) => setSubjectFilter(e.target.value)}
+            className="border border-gray-300 px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4A7BA8]"
+          >
+            <option value="">All Subjects</option>
+            {subjects.map((subj, i) => (
+              <option key={i} value={subj}>
+                {subj}
+              </option>
+            ))}
+          </select>
+
+          <select
+            value={experienceFilter}
+            onChange={(e) => setExperienceFilter(e.target.value)}
+            className="border border-gray-300 px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4A7BA8]"
+          >
+            <option value="">All Experience Levels</option>
+            {experiences.map((exp, i) => (
+              <option key={i} value={exp}>
+                {exp}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        {/* Right side: Search */}
         <input
           type="text"
           placeholder="Search by name..."
           value={search}
-          onChange={handleSearch}
+          onChange={(e) => setSearch(e.target.value)}
           className="border border-gray-300 px-4 py-2 rounded-lg w-full sm:w-64 focus:outline-none focus:ring-2 focus:ring-[#4A7BA8]"
         />
       </div>

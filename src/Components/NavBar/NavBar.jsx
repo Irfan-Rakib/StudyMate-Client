@@ -20,10 +20,12 @@ import Logo from "../../assets/Logo.png";
 
 const NavBar = () => {
   const { user, setUser, signOutFunc, loading } = useContext(AuthContext);
+
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
   const navigate = useNavigate();
 
+  // Logout
   const handleLogout = () => {
     signOutFunc()
       .then(() => {
@@ -34,11 +36,13 @@ const NavBar = () => {
       .catch((error) => toast.error(error.message));
   };
 
+  // Profile page
   const handleProfile = () => {
     navigate("/profile");
     setOpen(false);
   };
 
+  // Close dropdown on click outside
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
@@ -56,7 +60,6 @@ const NavBar = () => {
           <FaHome /> Home
         </NavLink>
       </li>
-
       <li>
         <NavLink to="/find-partners" className="flex items-center gap-2">
           <FaSearch /> Find Partners
@@ -72,13 +75,11 @@ const NavBar = () => {
           <FaHome /> Home
         </NavLink>
       </li>
-
       <li>
         <NavLink to="/find-partners" className="flex items-center gap-2">
           <FaSearch /> Find Partners
         </NavLink>
       </li>
-
       <li>
         <NavLink
           to="/create-partner-profile"
@@ -87,7 +88,6 @@ const NavBar = () => {
           <FaPlusCircle /> Create Partner Profile
         </NavLink>
       </li>
-
       <li>
         <NavLink to="/my-connections" className="flex items-center gap-2">
           <FaUsers /> My Connections
@@ -99,9 +99,9 @@ const NavBar = () => {
   return (
     <div className="bg-base-100 shadow-sm sticky top-0 z-50">
       <div className="navbar container mx-auto">
-        {/* Navbar Start */}
+        {/* LEFT */}
         <div className="navbar-start">
-          {/* Mobile Dropdown */}
+          {/* Mobile Menu */}
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
               <svg
@@ -157,20 +157,58 @@ const NavBar = () => {
           </Link>
         </div>
 
-        {/* Navbar Center */}
+        {/* MIDDLE */}
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
             {user ? userLinks : guestLinks}
           </ul>
         </div>
 
-        {/* Navbar End */}
-        <div className="navbar-end" ref={dropdownRef}>
+        {/* RIGHT */}
+        <div className="navbar-end flex items-center gap-3" ref={dropdownRef}>
+          {/* DaisyUI Theme Toggle */}
+          <label className="flex cursor-pointer gap-2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <circle cx="12" cy="12" r="5" />
+              <path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" />
+            </svg>
+
+            <input
+              type="checkbox"
+              value="synthwave"
+              className="toggle theme-controller"
+            />
+
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </label>
+
+          {/* User Auth Section */}
           {loading ? (
             <HashLoader size={30} color="#F59E0B" />
           ) : user ? (
             <div className="relative">
-              {/* Avatar */}
               <div
                 onClick={() => setOpen(!open)}
                 className="cursor-pointer w-10 h-10 rounded-full overflow-hidden border-2 border-amber-400"
@@ -186,19 +224,17 @@ const NavBar = () => {
                 )}
               </div>
 
-              {/* Dropdown */}
               {open && (
-                <div className="absolute right-0 mt-3 w-44 bg-white border rounded-lg shadow-lg animate-fade-in">
+                <div className="absolute right-0 mt-3 w-44 bg-white dark:bg-gray-800 border rounded-lg shadow-lg animate-fade-in">
                   <button
                     onClick={handleProfile}
-                    className="flex items-center gap-2 w-full px-4 py-2 hover:bg-gray-100"
+                    className="flex items-center gap-2 w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
                     <FaUser /> Profile
                   </button>
-
                   <button
                     onClick={handleLogout}
-                    className="flex items-center gap-2 w-full px-4 py-2 text-red-600 hover:bg-gray-100"
+                    className="flex items-center gap-2 w-full px-4 py-2 text-red-600 hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
                     <FaSignOutAlt /> Logout
                   </button>
@@ -213,7 +249,6 @@ const NavBar = () => {
               >
                 <FaSignInAlt /> Login
               </Link>
-
               <Link
                 to="/register"
                 className="btn bg-[#4A7BA8] text-white font-bold flex items-center gap-2"
