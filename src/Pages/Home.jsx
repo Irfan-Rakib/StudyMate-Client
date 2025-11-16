@@ -10,6 +10,12 @@ const Home = () => {
     <div>
       <Hero></Hero>
       <HeroCarousel></HeroCarousel>
+      <h2
+        className="text-3xl font-bold text-center mt-20 mb-10 text-[#4A7BA8]"
+        data-aos="fade-down"
+      >
+        Top Study Partners
+      </h2>
       <TopPartners></TopPartners>
       <HowItWorks></HowItWorks>
       <Testimonials></Testimonials>

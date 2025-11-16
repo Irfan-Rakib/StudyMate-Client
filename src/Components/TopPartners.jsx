@@ -38,15 +38,8 @@ const TopPartners = () => {
   }
 
   return (
-    <section className="py-16">
+    <section className="px-16">
       <div className="max-w-6xl mx-auto px-4">
-        <h2
-          className="text-3xl font-bold text-center mb-10 text-[#4A7BA8]"
-          data-aos="fade-down"
-        >
-          Top Study Partners
-        </h2>
-
         <div className="grid gap-8 md:grid-cols-3 sm:grid-cols-2 grid-cols-1">
           {partners.map((partner, index) => (
             <div
