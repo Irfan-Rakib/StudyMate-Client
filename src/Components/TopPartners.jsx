@@ -34,7 +34,7 @@ const TopPartners = () => {
   }
 
   return (
-    <section className="px-16">
+    <section className="">
       <div className="max-w-6xl mx-auto px-4">
         <div className="grid gap-8 md:grid-cols-3 sm:grid-cols-2 grid-cols-1">
           {partners.map((partner, index) => (
