@@ -21,11 +21,7 @@ const TopPartners = () => {
   }, []);
 
   const handleViewProfile = (id) => {
-    if (!user) {
-      navigate("/login");
-    } else {
-      navigate(`/partner/${id}`);
-    }
+    navigate(`/partner/${id}`);
   };
 
   // 🔥 Loading Spinner
