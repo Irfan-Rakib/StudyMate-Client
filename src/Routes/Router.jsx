@@ -24,8 +24,22 @@ export const router = createBrowserRouter([
       { path: "/login", Component: Login },
       { path: "/register", Component: Register },
       { path: "/profile", Component: Profile },
-      { path: "/create-partner-profile", Component: CreatePartnerProfile },
-      { path: "/my-connections", Component: MyConnections },
+      {
+        path: "/create-partner-profile",
+        element: (
+          <PrivateRoutes>
+            <CreatePartnerProfile />
+          </PrivateRoutes>
+        ),
+      },
+      {
+        path: "/my-connections",
+        element: (
+          <PrivateRoutes>
+            <MyConnections />
+          </PrivateRoutes>
+        ),
+      },
       {
         path: "/partner/:id",
         element: (
